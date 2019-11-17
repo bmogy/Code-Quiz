@@ -51,35 +51,39 @@ function renderPage(search,call){
                button.innerHTML = item.choices[i]
                li.appendChild(button)
            }
+           
     // creating a event listener to click click on the buttons
        //i am using event delegation
            ul.addEventListener("click", function (e) {
                if (e.target.matches("button")) {
+    
                    var index = e.target.parentElement.getAttribute("data-index")
                    if (item.choices[index] === item.answer) {
                     document.querySelector(".time").innerHTML =""
                        p.innerHTML = "correct answer"
-                    
+                    var audio = document.querySelector("audio")
+                  audio.play()
                        document.querySelector(".time").appendChild(p)
                        call()
                    } else if (item.choices[index] !== item.answer) {
                     document.querySelector(".time").innerHTML =""
                        p.innerHTML = "Wrong Answer"
                        countDownLength = countDownLength - 15
-                       document.querySelector(".time").appendChild(p)
+                    document.querySelector(".time").appendChild(p)
                         call()
                    }
                
                }
            })
     // appending my main page to the wrapper div
+        
            wrapper.appendChild(div)
        })
 
 }
 // loads first question
 function game() {
-    document.querySelector(".time").innerHTML=""
+
     countDownLength = 75
     clearInterval(interval)
     countDown()
