@@ -68,6 +68,8 @@ function renderPage(search,call){
                    } else if (item.choices[index] !== item.answer) {
                     document.querySelector(".time").innerHTML =""
                        p.innerHTML = "Wrong Answer"
+                       var audioTwo = document.querySelector("#audioTwo")
+                       audioTwo.play()
                        countDownLength = countDownLength - 15
                     document.querySelector(".time").appendChild(p)
                         call()
